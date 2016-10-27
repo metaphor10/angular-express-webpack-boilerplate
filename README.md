@@ -1,10 +1,9 @@
-# angular-express-webpack-boilerplate
+# angular-1.5-express-webpack-boilerplate
 
 A comprehensive boilerplate for express+angular application that uses webpack. It works in both production and development modes and provides automatic rebundling and restaring while developing.
 
 This webpack configuration has several predefined loaders:
 * [babel-loader](https://github.com/babel/babel-loader) for *.es6.js files
-* [less-loader](https://github.com/webpack/less-loader) for *.less files
 * [html-loader](https://github.com/webpack/html-loader) for *.html files
 * [css-loader](https://github.com/webpack/css-loader) for *.css files
 * [file-loader](https://github.com/webpack/file-loader) and [image-loader](https://github.com/novoda/image-loader) for *.jpeg, *.png, *.gif and *.svg files
@@ -15,7 +14,6 @@ This webpack configuration has several predefined loaders:
 * stats-webpack-pluginto for [analyse](http://webpack.github.io/analyse/)
 
 Default angular app has [angular-ui-router](https://github.com/angular-ui/ui-router) module.
-
 Based on the great article: [The ultimate webpack setup](http://www.christianalfoni.com/articles/2015_04_19_The-ultimate-webpack-setup)
 
 ### installation
@@ -23,7 +21,7 @@ Based on the great article: [The ultimate webpack setup](http://www.christianalf
 Clone the repo:
 
 ```bash
-$ git clone git@github.com:tenphi/webpack-express-boilerplate.git my-project
+$ git clone git@github.com:alexrosepizant/webpack-express-boilerplate.git my-project
 $ cd my-project
 ```
 
@@ -61,7 +59,7 @@ Application has two separate directory `frontend` and `backend`. The entry point
 Build assets for the application:
 
 ```bash
-$ NODE_ENV=production webpack -p --config webpack.production.config.js
+$ NODE_ENV=production webpack -p
 ```
 
 Then run the app:

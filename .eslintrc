@@ -1,0 +1,85 @@
+---
+# babel support more syntax stuff than eslint for now
+parser: babel-eslint
+
+ecmaFeatures:
+  modules: true
+
+env:
+  es6: true
+  browser: true
+  node: true
+
+extends:
+  - plugin:import/errors
+  - plugin:import/warnings
+
+settings:
+  import/extensions: ['.js']
+
+# 0: off, 1: warning, 2: error
+rules:
+  indent: [2, 2] # 2 spaces indentation
+  max-len: [2, 120, 4]
+  quotes: [2, "double"]
+  semi: [2, "never"]
+
+  brace-style: [2, "1tbs"]
+  comma-dangle: [2, "always-multiline"]
+  comma-style: [2, "last"]
+  dot-location: [2, "property"]
+  camelcase: [1, { "properties": "never" }]
+  no-array-constructor: [1]
+  no-mixed-spaces-and-tabs: [2]
+  no-trailing-spaces: [1]
+
+  one-var: [2, "never"]
+  no-const-assign: [1]
+  constructor-super: [2]
+  no-useless-constructor: [1]
+  no-class-assign: [2]
+  no-dupe-class-members: [2]
+  no-this-before-super: [2]
+  no-var: [2]
+  prefer-const: [2]
+  no-bitwise: [0]
+  new-cap: [0]
+  no-use-before-define: [2, "nofunc"]
+  no-unused-vars: [1, {"args": "after-used", "varsIgnorePattern": "(Component)|(appConfig)", "argsIgnorePattern": "^_"}]
+  no-duplicate-case: [2]
+  no-unreachable: [2]
+  no-dupe-args: [2]
+  no-cond-assign: [2]
+  valid-typeof: [2]
+  eqeqeq: [2, "always"]
+  no-empty-pattern: [2]
+  no-self-assign: [2]
+  no-unused-labels: [1]
+
+  object-shorthand: [2, "methods"]
+  keyword-spacing: [2, {"after": true} ]
+  space-before-blocks: [2, "always"]
+  space-before-function-paren: [2, "never"]
+  object-curly-spacing: [2, "never"]
+  array-bracket-spacing: [2, "never"]
+  computed-property-spacing: [2, "never"]
+  space-in-parens: [2, "never"]
+  spaced-comment:
+    - 2
+    - "always"
+    - markers:
+      - "*function::"
+      - "*class::"
+      - "*attr::"
+      - "*data::"
+
+  no-underscore-dangle: 0
+
+  no-process-exit: 0
+
+  import/namespace: [2, {allowComputed: true}]
+  import/extensions: [2, { js: "never", json: "always" }]
+  import/no-mutable-exports: [2, "always"]
+  import/order: [1, {groups: ["builtin", "external", "internal", "parent", "sibling", "index"]}]
+  import/no-duplicates: 2
+  import/newline-after-import: 1

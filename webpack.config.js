@@ -1,67 +1,82 @@
-var Webpack = require('webpack');
-var StatsPlugin = require('stats-webpack-plugin');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var autoprefixer = require('autoprefixer-core');
-var csswring = require('csswring');
-var path = require('path');
-var nodeModulesPath = path.resolve(__dirname, 'node_modules');
-var assetsPath = path.resolve(__dirname, 'public', 'assets');
-var entryPath = path.resolve(__dirname, 'frontend', 'app.es6.js');
-var host = process.env.APP_HOST || 'localhost';
+const path = require("path")
+const Webpack = require("webpack")
+const StatsPlugin = require("stats-webpack-plugin")
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const postcssImport = require("postcss-import")
+const postcssUrl = require("postcss-url")
+const postcssCssnext = require("postcss-cssnext")
 
-var config = {
+const isProduction = process.env.NODE_ENV === "production"
+const host = process.env.APP_HOST || "localhost"
+const entryPath = path.resolve(__dirname, "src/app/", "app.js")
+const buildPath = path.resolve(__dirname, "dist")
 
-  // Makes sure errors in console map to the correct file
-  // and line number
-  devtool: 'eval',
-  entry: [
-
+const config = {
+  devtool: (isProduction) ? "source-map" : "eval",
+  entry: (isProduction) ? entryPath :[
     // For hot style updates
-    'webpack/hot/dev-server',
-
+    "webpack/hot/dev-server",
     // The script refreshing the browser on none hot updates
-    'webpack-dev-server/client?http://' + host + ':3001',
-
+    "webpack-dev-server/client?http://" + host + ":3001",
     // Our application
-    entryPath
+    entryPath,
   ],
   output: {
-    path: assetsPath,
-    filename: 'bundle.js'
+    path: buildPath,
+    filename: "script.js",
+    publicPath: "/",
   },
   module: {
-
     loaders: [
-      { test: /\.es6.js$/, loader: 'babel-loader' },
       {
-        test: /\.css$/,
-        loader: 'style!css!postcss'
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ["babel?compact=false", "eslint"],
       },
       {
-        test: /\.less$/,
-        loader: 'style!css!postcss!less'
+        test: /\.json$/,
+        loaders: [
+          "json",
+        ],
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract("style?singleton", "css", "postcss?from=src/style/style.css"),
       },
       {
         test: /\.html$/,
-        loader: 'html-loader'
+        loader: "html-loader",
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file?hash=sha512&digest=hex&name=[hash].[ext]',
-          'image?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
-      }
-
+        test: /\.(ico|jpe?g|png|gif)$/,
+        loader: "file-loader",
+      },
+    ],
+  },
+  postcss: (loader) => {
+    return [
+      postcssImport({
+        addDependencyTo: loader,
+        path: ["src/style/"],
+      }),
+      postcssUrl,
+      postcssCssnext,
     ]
   },
-  postcss: [autoprefixer],
+}
 
-  plugins: [
-    // We have to manually add the Hot Replacement plugin when running
-    // from Node
-    new Webpack.HotModuleReplacementPlugin()
+if (isProduction) {
+  config.plugins = [
+    new ExtractTextPlugin("[name].[hash].css"),
+    new Webpack.optimize.UglifyJsPlugin({minimize: true}),
+    new StatsPlugin(path.join(__dirname, "stats.json"), {chunkModules: true}),
   ]
-};
+} else {
+  config.plugins = [
+    // We have to manually add the Hot Replacement plugin when running from Node
+    new ExtractTextPlugin("[name].[hash].css", {disable: !isProduction}),
+    new Webpack.HotModuleReplacementPlugin(),
+  ]
+}
 
-module.exports = config;
+module.exports = config
