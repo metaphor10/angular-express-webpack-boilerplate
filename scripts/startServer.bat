@@ -1,1 +1,0 @@
-cd C:\Users\HELIOS\dev\lescoqssoccer\server && node server.js

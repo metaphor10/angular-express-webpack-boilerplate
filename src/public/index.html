@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <title>App Title</title>
+  <meta charset="utf-8"/>
+  <meta name="fragment" content="!"/>
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="description" content="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+  <base href="/">
+  <nav class="nav has-shadow" id="top">
+    <div class="container">
+      <div class="nav-left">
+        <a class="nav-item" href="../index.html">
+          <img src="http://bulma.io/images/bulma-type.png" alt="Description">
+        </a>
+        <p class="control has-addons searchbox">
+          <input class="input" type="text" placeholder="Rechercher un truc...">
+          <a class="button is-dark">
+            &nbsp; <i class="fa fa-search"></i> &nbsp;
+          </a>
+        </p>
+      </div>
+      <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <div class="nav-right nav-menu">
+        <a class="nav-item is-tab">
+          <i class="fa fa-bell-o"></i>
+        </a>
+        <a class="nav-item is-tab">
+          <img src="https://placehold.it/64x64" class="avatar-photo">
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="spacer"></div>
+  <div class="container">
+    <div class="columns">
+    <aside class="column is-2 aside hero is-fullheight is-hidden-mobile">
+      <div>
+        <div class="uploader has-text-centered">
+          <a class="button">
+            <i class="fa fa-upload"></i>
+          </a>
+        </div>
+        <div class="main">
+          <div class="title">Main</div>
+          <a href="#" ui-sref="home" class="item active">
+            <span class="icon"><i class="fa fa-home"></i></span>
+            <span class="name">Accueil</span>
+          </a>
+          <a href="#" ui-sref="article" class="item">
+            <span class="icon"><i class="fa fa-th-list"></i></span>
+            <span class="name">Blog</span>
+          </a>
+          <a href="#" class="item">
+            <span class="icon"><i class="fa fa-agenda "></i></span>
+            <span class="name">Agenda</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+    <ui-view class="content column is-10"></ui-view>
+  </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="has-text-centered">
+        <p>
+          <strong>Les coqs soccer</strong> by <a href="#">Alexandre ROSE-PIZANT</a>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+          is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+        </p>
+        <p>
+          <a class="icon" href="#">
+            <i class="fa fa-github"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script src="/dist/script.js"></script>
+</body>
+</html>

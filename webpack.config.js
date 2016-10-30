@@ -8,7 +8,7 @@ const postcssCssnext = require("postcss-cssnext")
 
 const isProduction = process.env.NODE_ENV === "production"
 const host = process.env.APP_HOST || "localhost"
-const entryPath = path.resolve(__dirname, "app/js/", "app.js")
+const entryPath = path.resolve(__dirname, "src/app/", "app.js")
 const buildPath = path.resolve(__dirname, "dist")
 
 const config = {
@@ -41,7 +41,10 @@ const config = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style?singleton", "css", "postcss?from=app/assets/stylesheets/style.css"),
+        loader: ExtractTextPlugin.extract(
+          "style",
+          "css",
+          "postcss?from=src/assets/stylesheets/*.css"),
       },
       {
         test: /\.html$/,
@@ -57,7 +60,7 @@ const config = {
     return [
       postcssImport({
         addDependencyTo: loader,
-        path: ["app/assets/style"],
+        path: ["src/assets/style"],
       }),
       postcssUrl,
       postcssCssnext,
