@@ -1,0 +1,60 @@
+{
+	"home_title" : "Accueil",
+	"agenda_title" : "What next?!",
+	"article_title": "Articles",
+	"gallery_title": "Photos",
+	"link_title": "Coin des voyageurs",
+	"suggestions_title" : "Boîte à idée",
+
+	"welcom" : "Bonjour",
+	"profil" : "Profil",
+	"parameters" : "Paramètres",
+	"disconnect" : "Deconnexion",
+
+	"agenda_view"	: "Liste",
+	"agenda_map"	: "Map",
+	"agenda_add"	: "Ajouter",
+	"event_details"	: "Détails de l'évènement",
+	"title"			: "Titre",
+	"type"			: "Type",
+	"content"		: "Contenu",
+	"startdate"		: "Date de début",
+	"enddate"		: "Date de fin",
+	"dates"			: "Dates",
+	"location"		: "Localisation",
+
+	"gallery_navbar_gallery_title" : "Gallerie",
+	"gallery_navbar_list_title" : "Vue Liste",
+	"gallery_navbar_grid_title" : "Albums",
+	"gallery_navbar_add_title" : "Ajouter",
+	"gallery_detail": "Détails",
+	"gallery_name"	: "Nom",
+	"gallery_cover" : "Couverture",
+ 	"gallery_description" : "Description",
+ 	"gallery_add" : "Ajouter des photos",
+ 	"gallery_edit" : "Editer les photos",
+
+ 	"photos_upload": "Uploader une photo différente",
+
+	"suggestions_add" : "Ajouter une suggestion",
+
+	"articles_add": "Ajouter un article",
+	"articles_empty": "Pas encore d'articles",
+
+	"profile_firstname" : "Prénom",
+	"profile_lastname" : "Nom",
+	"profile_email" : "Email",
+	"profile_username" : "Identifiant",
+	"profile_password" : "Mot de passe",
+	"profile_confirm" : "Confirmation",
+
+	"common_date_prefix": "Le",
+	"common_ok": "OK",
+	"common_cancel": "Annuler",
+	"common_save": "Sauvegarder",
+	"common_delete": "Supprimer",
+	"common_back" : "Retour",
+	"common_by" : "par",
+
+	"welcome" : "Bonjour"
+}

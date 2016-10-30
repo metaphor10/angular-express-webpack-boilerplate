@@ -1,0 +1,19 @@
+Logiciels a installer:
+- Nodejs
+- MongoDB
+- Git (Windows: Add git to path)
+
+- SublimeText
+- Smartgit
+- Robomongo
+
+Initialisation de l'environnement:
+- npm install 
+
+- install de imageMagick (Windows: Add imagemagick to path)
+- install de quickthumb
+
+Cr�er le r�pertoire img/users dans server/public/ pour l'upload des fichiers.
+Cr�er les r�pertoire .cache/crop/100x100/img/users et .cache/crop/300x300/img/users dans server/public
+
+Enjoy it!

@@ -2,9 +2,9 @@
   "presets": ["es2015"],
   "plugins": [
     ["module-resolver", {
-      "root": ["src"],
+      "root": ["app"],
       "alias": {
-        "app": "./src/app",
+        "app": "./app/js",
       }
     }],
   ]

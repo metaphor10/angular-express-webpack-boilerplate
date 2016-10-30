@@ -1,6 +1,7 @@
 const path = require("path")
 const express = require("express")
 const httpProxy = require("http-proxy")
+const fs = require("fs")
 
 const proxy = httpProxy.createProxyServer()
 const app = express()
@@ -8,7 +9,7 @@ const app = express()
 const isProduction = process.env.NODE_ENV === "production"
 const host = process.env.APP_HOST || "localhost"
 const port = isProduction ? 8080 : 3000
-const publicPath = path.resolve(__dirname, "..", "src/public")
+const publicPath = path.resolve(__dirname, "..", "app/public")
 
 if (!isProduction) {
   // Any requests to localhost:3000/assets is proxied

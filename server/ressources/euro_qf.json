@@ -1,0 +1,12 @@
+{
+    "matchs": [
+        {"home": "SUI", "away": "POL", "startsAt": "2016-06-25T15:00+02:00", "type": "R16"},
+        {"home": "WAL", "away": "NIR", "startsAt": "2016-06-25T18:00+02:00", "type": "R16"},
+        {"home": "CRO", "away": "POR", "startsAt": "2016-06-25T21:00+02:00", "type": "R16"},
+        {"home": "FRA", "away": "IRL", "startsAt": "2016-06-26T15:00+02:00", "type": "R16"},
+        {"home": "GER", "away": "SVK", "startsAt": "2016-06-26T18:00+02:00", "type": "R16"},
+        {"home": "HUN", "away": "BEL", "startsAt": "2016-06-26T21:00+02:00", "type": "R16"},
+        {"home": "ITA", "away": "ESP", "startsAt": "2016-06-27T18:00+02:00", "type": "R16"},
+        {"home": "ENG", "away": "ISL", "startsAt": "2016-06-27T21:00+02:00", "type": "R16"}
+      ]
+}

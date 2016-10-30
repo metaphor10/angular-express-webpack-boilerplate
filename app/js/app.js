@@ -1,4 +1,4 @@
-import "../style/style.css"
+import "../assets/stylesheets/style.css"
 
 import angular from "angular"
 import "angular-ui-router"

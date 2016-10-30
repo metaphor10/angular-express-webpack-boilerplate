@@ -1,0 +1,40 @@
+{
+	"matchs": [{
+		"home": "FRA",
+		"away": "POR",
+		"startsAt": "2016-07-10T21:00+02:00",
+		"type": "FINALE",
+		"scoreHome": 0,
+		"scoreAway": 1,
+		"scoresUpdated": true,
+		"bets": [{
+			"homeScore": 3,
+			"awayScore": 0,
+			"user": "5655e9c3e4cd503851079d6f"
+		}, {
+			"homeScore": 3,
+			"awayScore": 1,
+			"user": "5658caaee4cd503851079d76"
+		}, {
+			"homeScore": 2,
+			"awayScore": 0,
+			"user": "564c4a9437ee3b947e141d81"
+		}, {
+			"homeScore": 3,
+			"awayScore": 0,
+			"user": "564ae6f3d4ff93480c7b7bae"
+		}, {
+			"homeScore": 3,
+			"awayScore": 0,
+			"user": "564b80be1c310a690ff9222e"
+		}, {
+			"homeScore": 3,
+			"awayScore": 0,
+			"user": "564c48bf37ee3b947e141d7f"
+		}, {
+			"homeScore": 3,
+			"awayScore": 0,
+			"user": "564c74d71ffbd4c6035dbc24"
+		}]
+	}]
+}

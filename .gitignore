@@ -2,6 +2,7 @@
 .idea
 npm-debug.log
 
-public/assets
+server/public/img/users/
+server/public/.cache
 node_modules
 stats.json

@@ -1,0 +1,8 @@
+{
+    "matchs": [
+        {"home": "POL", "away": "POR", "startsAt": "2016-06-30T21:00+02:00", "type": "QF"},
+        {"home": "WAL", "away": "BEL", "startsAt": "2016-07-01T21:00+02:00", "type": "QF"},
+        {"home": "GER", "away": "ITA", "startsAt": "2016-07-02T21:00+02:00", "type": "QF"},
+        {"home": "FRA", "away": "ISL", "startsAt": "2016-07-03T21:00+02:00", "type": "QF"}
+      ]
+}
