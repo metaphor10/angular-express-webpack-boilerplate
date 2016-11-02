@@ -11,7 +11,7 @@ const	Schema = mongoose.Schema
 /**
  * Suggestion Schema
  */
-const SuggestionSchema = new Schema({
+const VoteSchema = new Schema({
   created: {
     type: Date,
     default: Date.now,
@@ -33,10 +33,10 @@ const SuggestionSchema = new Schema({
 /**
  * Statics
  */
-SuggestionSchema.statics.load = function(id, cb) {
+VoteSchema.statics.load = function(id, cb) {
   this.findOne({
     _id: id,
   }).populate("user", "name username avatar").exec(cb)
 }
 
-mongoose.model("Suggestion", SuggestionSchema)
+mongoose.model("Vote", VoteSchema)

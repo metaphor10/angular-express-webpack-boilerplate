@@ -1,5 +1,7 @@
+"use strict"
+
 const mongoose = require("mongoose")
-const _ = require("underscore")
+const _ = require("lodash")
 
 const Comment = mongoose.model("Comment")
 

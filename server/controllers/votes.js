@@ -1,8 +1,10 @@
+"use strict"
+
 const moment = require("moment")
 const _ = require("lodash")
 const mongoose = require("mongoose")
 
-const Suggestion = mongoose.model("Suggestion")
+const Vote = mongoose.model("Vote")
 const Article = mongoose.model("Article")
 
 
@@ -10,7 +12,7 @@ const Article = mongoose.model("Article")
  * Find suggestion by id
  */
 exports.suggestion = function(req, res, next, id) {
-  Suggestion.load(id, function(err, suggestion) {
+  Vote.load(id, function(err, suggestion) {
     if (err) return next(err)
     if (!suggestion) return next(new Error("Failed to load suggestion " + id))
     req.suggestion = suggestion
@@ -22,7 +24,7 @@ exports.suggestion = function(req, res, next, id) {
  * Create a suggestion
  */
 exports.create = function(req, res) {
-  const suggestion = new Suggestion(req.body)
+  const suggestion = new Vote(req.body)
   suggestion.user = req.user
   suggestion.save(function(err) {
     console.log(err)
@@ -87,7 +89,7 @@ exports.all = function(req, res) {
   const perPage = req.query.perPage
   const page = req.query.page
 
-  Suggestion.find({})
+  Vote.find({})
 		.sort("-created")
 		.limit(perPage)
 		.skip(perPage * page)
@@ -110,7 +112,7 @@ exports.closeVotes = function() {
 
   const date = moment().subtract(1, "months").toISOString()
 
-  Suggestion.find({
+  Vote.find({
     "created": {
       "$lt": date,
     },
@@ -167,7 +169,7 @@ exports.closeVotes = function() {
             if (err) {
               console.warn("Error when trying to remove suggestion " + err)
             } else {
-              console.warn("Suggestion removed with success")
+              console.warn("Vote removed with success")
             }
           })
         }

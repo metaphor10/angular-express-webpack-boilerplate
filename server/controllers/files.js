@@ -1,9 +1,20 @@
+"use strict"
+
 const fs = require("fs")
 const path = require("path")
 const gm = require("gm").subClass({
   imageMagick: true,
 })
 const config = require("../config")
+
+const guid = (function() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+  }
+  return function() {
+    return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4()
+  }
+})()
 
 exports.uploadPhoto = function(req, res) {
   console.info("inside uploadPhoto") // <-- never reached using IE9
@@ -94,12 +105,3 @@ function handlePhotoUpload(params, callbacks) {
   }
 })
 }
-
-const guid = (function() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
-  }
-  return function() {
-    return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4()
-  }
-})()

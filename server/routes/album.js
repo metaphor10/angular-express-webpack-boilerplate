@@ -19,8 +19,8 @@ module.exports = function(app) {
   app.get("/albums", albums.findAllAlbums)
   app.get("/albums/:id", albums.findAlbumById)
   app.put("/albums/:id", albums.updateAlbum)
-  app.post("/albums/:id", albums.updateAlbum)
-  app.delete("/albums/:id", albums.deleteAlbum)
+  app.post("/albums/:id", authorization.requiresLogin, albums.updateAlbum)
+  app.delete("/albums/:id", authorization.requiresLogin, albums.deleteAlbum)
 
 	/** Download**/
   app.post("/download/:id", albums.download)

@@ -1,23 +1,28 @@
+"use strict"
+
 const path = require("path")
 const fs = require("fs")
 const mongoose = require("mongoose")
-const _ = require("underscore")
+const _ = require("lodash")
 const archiver = require("archiver")
 const config = require("../config")
 
 const Album = mongoose.model("Album")
 
 exports.album = function(req, res, next) {
-  Album.findOne({
-    _id: req.params.id,
-  })
+
+  Album.findOne({_id: req.params.id})
 		.populate("comments.user", "_id name username avatar")
 		.populate("comments.replies.user", "_id name username avatar")
-		.populate("user").exec(function(err, album) {
-  if (err) return next(err)
-  req.album = album
-  next()
-})
+		.populate("user")
+    .exec(function(err, album) {
+      if (err) {
+        return next(err)
+      }
+
+      req.album = album
+      next()
+    })
 }
 
 exports.findAllAlbums = function(req, res) {
@@ -32,21 +37,22 @@ exports.findAllAlbums = function(req, res) {
 		.sort("-created")
 		.populate("user", "_id name username avatar")
 		.limit(perPage)
-		.skip(perPage * page).exec(function(err, albums) {
-  res.send(albums)
-})
+		.skip(perPage * page)
+    .exec(function(err, albums) {
+      res.send(albums)
+    })
 }
 
 exports.findAlbumById = function(req, res) {
-  Album.findOne({
-    _id: req.params.id,
-  })
+
+  Album.findOne({_id: req.params.id})
 		.populate("comments.user", "_id name username avatar")
 		.populate("comments.replies.user", "_id name username avatar")
-		.populate("user").exec(function(err, album) {
-  if (err) console.log("error finding album: " + err)
-  res.send(album)
-})
+		.populate("user")
+    .exec(function(err, album) {
+      if (err) console.log("error finding album: " + err)
+      res.send(album)
+    })
 }
 
 exports.addAlbum = function(req, res) {
@@ -54,9 +60,10 @@ exports.addAlbum = function(req, res) {
   const newAlbum = req.body
   newAlbum.user = req.user
 
-  console.log("Adding Album: " + JSON.stringify(newAlbum))
   Album.create(newAlbum, function(err, album) {
-    if (err) console.log("error: " + err)
+    if (err) {
+      console.log("error: " + err)
+    }
     res.send(album)
   })
 }

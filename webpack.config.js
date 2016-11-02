@@ -1,7 +1,7 @@
 const path = require("path")
 const Webpack = require("webpack")
-const StatsPlugin = require("stats-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const StyleLintPlugin = require("stylelint-webpack-plugin")
 const postcssImport = require("postcss-import")
 const postcssUrl = require("postcss-url")
 const postcssCssnext = require("postcss-cssnext")
@@ -9,6 +9,7 @@ const postcssCssnext = require("postcss-cssnext")
 const isProduction = process.env.NODE_ENV === "production"
 const host = process.env.APP_HOST || "localhost"
 const entryPath = path.resolve(__dirname, "src/app/", "app.js")
+const assetPath = path.resolve(__dirname, "src/assets/")
 const buildPath = path.resolve(__dirname, "dist")
 
 const config = {
@@ -21,6 +22,16 @@ const config = {
     // Our application
     entryPath,
   ],
+  devServer : {
+    publicPath: "/dist",
+    contentBase: "./src/",
+    hot: true,
+    quiet: false,
+    noInfo: true,
+    stats: {
+      colors: true,
+    },
+  },
   output: {
     path: buildPath,
     filename: "script.js",
@@ -48,11 +59,11 @@ const config = {
       },
       {
         test: /\.html$/,
-        loader: "html-loader",
+        loader: "html",
       },
       {
         test: /\.(ico|jpe?g|png|gif)$/,
-        loader: "file-loader",
+        loader: "file",
       },
     ],
   },
@@ -60,7 +71,6 @@ const config = {
     return [
       postcssImport({
         addDependencyTo: loader,
-        path: ["src/assets/style"],
       }),
       postcssUrl,
       postcssCssnext,
@@ -70,15 +80,19 @@ const config = {
 
 if (isProduction) {
   config.plugins = [
-    new ExtractTextPlugin("[name].[hash].css"),
+    new Webpack.optimize.DedupePlugin(),
     new Webpack.optimize.UglifyJsPlugin({minimize: true}),
-    new StatsPlugin(path.join(__dirname, "stats.json"), {chunkModules: true}),
+    new ExtractTextPlugin("style.css"),
   ]
 } else {
   config.plugins = [
-    // We have to manually add the Hot Replacement plugin when running from Node
-    new ExtractTextPlugin("[name].[hash].css", {disable: !isProduction}),
+    new ExtractTextPlugin("style.css", {disable: !isProduction}),
     new Webpack.HotModuleReplacementPlugin(),
+    new StyleLintPlugin({
+      webpackConfigFile: ".stylelintrc",
+      files: "src/assets/stylesheets/style.css",
+      failOnError: false,
+    }),
   ]
 }
 

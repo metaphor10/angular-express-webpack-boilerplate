@@ -9,8 +9,8 @@ const mongoose = require("mongoose")
 const Article = mongoose.model("Article")
 const Album = mongoose.model("Album")
 const UserEvent = mongoose.model("UserEvent")
-const  User = mongoose.model("User")
-const Suggestion = mongoose.model("Suggestion")
+const User = mongoose.model("User")
+const Vote = mongoose.model("Vote")
 const Comment = mongoose.model("Comment")
 
 const formatUserData = function(userData) {
@@ -114,7 +114,7 @@ exports.getAllUserData = function(req, res) {
     })
   } else {
     userData.userEvents = userEvent
-    return Suggestion.find(query)
+    return Vote.find(query)
 					.sort("-created")
 					.populate("user", "_id name username avatar").exec()
   }

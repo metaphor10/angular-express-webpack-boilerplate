@@ -1,6 +1,6 @@
 import angular from "angular"
 
-import ArticleFactory from "../../factories/article"
+import ArticleFactory from "../../api/article"
 import ArticleConfig from "./article.config"
 import ArticleListCtrl from "./list/listCtrl"
 

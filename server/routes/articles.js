@@ -4,14 +4,6 @@
 const articles = require("../controllers/articles")
 const authorization = require("./middlewares/authorization")
 
-// Article authorization helpers
-const hasAuthorization = function(req, res, next) {
-  if (req.article.user.id !== req.user.id) {
-    return res.send(401, "User is not authorized")
-  }
-  next()
-}
-
 module.exports = function(app) {
 
   app.get("/articles/:articleId", articles.show)

@@ -20,7 +20,7 @@ module.exports = function(app) {
   app.post("/comments/:id", comments.updateComment)
 
 	// get comments count
-    	app.get("/commentsCount", comments.getItemsCount)
+  app.get("/commentsCount", comments.getItemsCount)
 
 	// Finish with setting up the commentId param
   app.param("id", comments.comment)

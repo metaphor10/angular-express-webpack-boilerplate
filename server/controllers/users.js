@@ -1,3 +1,5 @@
+"use strict"
+
 const moment = require("moment")
 const passport = require("passport")
 const mongoose = require("mongoose")

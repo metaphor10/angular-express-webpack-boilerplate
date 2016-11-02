@@ -1,1 +1,1 @@
-cd C:\Users\HELIOS\dev\lescoqssoccer\server && node server.js
+cd C:\Users\PATH\server && node server.js

@@ -3,12 +3,11 @@ Logiciels a installer:
 - MongoDB
 - Git (Windows: Add git to path)
 
-- SublimeText
-- Smartgit
+- ATOM
 - Robomongo
 
 Initialisation de l'environnement:
-- npm install 
+- npm install
 
 - install de imageMagick (Windows: Add imagemagick to path)
 - install de quickthumb

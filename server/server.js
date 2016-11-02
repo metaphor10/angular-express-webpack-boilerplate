@@ -39,7 +39,7 @@ require("./passport")(passport)
 
 const app = express()
 
-require("./express")(app, passport, db)
+require("./express")(app, passport)
 
 walk(routesPath, app, true)
 
@@ -59,13 +59,17 @@ app.get("/*", function(req, res) {
   res.sendFile(path.join(publicPath, "index.html"))
 })
 
-mongoose.connect("mongodb://localhost/mean-dev", {server:{auto_reconnect:true}}, function(err) {
-  if (err) {
-    console.error("\x1b[31m", "Could not connect to MongoDB!")
-    console.log(err)
-  }  else {
-    app.listen(port, function() {
-      console.log("Express app started on port " + port)
-    })
-  }
+// mongoose.connect("mongodb://localhost/mean-dev", {server:{auto_reconnect:true}}, function(err) {
+//   if (err) {
+//     console.error("\x1b[31m", "Could not connect to MongoDB!")
+//     console.log(err)
+//   }  else {
+//     app.listen(port, function() {
+//       console.log("Express app started on port " + port)
+//     })
+//   }
+// })
+
+app.listen(port, function() {
+  console.log("Express app started on port " + port)
 })
